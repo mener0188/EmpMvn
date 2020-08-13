@@ -5,11 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 面向接口开发 -->
 <mapper namespace="com.bw.mapper.EmpMapper">
 
-	<select id="selectEmp" resultType="map">
-		select * from emp e where 1=1
+	<!-- sql 要注意测试 -->
+	<select id="selectEmp" resultType="Emp">
+		select e.*, d.departname departname2 from emp e 
+		left outer join depart d on e.departid=d.departid
+		where 1=1
 		<if test="empname!=null and empname!='' ">
 			and e.empname like '%${empname}%'
 		</if>
+		
 		 order by empid desc
 	</select>
 
@@ -35,6 +39,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from emp where empid=${value}
 	</delete>
 	
+	
+	<select id="selectDepartById" resultType="Depart">
+		select * from depart d where departid=${value}
+	</select>
 	
 	
 </mapper>

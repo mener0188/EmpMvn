@@ -10,12 +10,12 @@ import com.bw.entity.Job;
 
 /**
  * 
- * 1.selectEmp·½·¨,selectEmpById
+ * 1.selectEmpï¿½ï¿½ï¿½ï¿½,selectEmpById
  * 
  *
  */
 public interface EmpMapper {
-	//empname Ô±¹¤Ãû
+	//empname Ô±ï¿½ï¿½ï¿½ï¿½
 	public List<Emp> selectEmp(@Param("empname")String empname);
 		
 	public Emp selectEmpById(Integer empid);
@@ -27,5 +27,11 @@ public interface EmpMapper {
 	public int insertEmp(Emp emp);
 	
 	public int deleteEmp(Integer empid);
+	
+	
+	
+	//*************************å…³è”æŸ¥è¯¢å¸¸ç”¨çš„ä¸€ç§æ–¹å¼
+	
+	public Depart selectDepartById(Integer departid);
 
 }

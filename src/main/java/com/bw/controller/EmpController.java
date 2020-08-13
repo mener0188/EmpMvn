@@ -1,5 +1,6 @@
 package com.bw.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.bw.util.PageUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+//注意:本案例含有两种常用的关联查询方式
 @Controller
 public class EmpController {
 
@@ -38,6 +40,15 @@ public class EmpController {
 		
 		List<Emp> empList = empMapper.selectEmp(empname);
 		System.out.println(empList.size()+"-----------------------------------");
+		for (Emp emp : empList) {
+			//departid在emp表里,多对一,外键在多的表中
+			//根据departid--查询departname
+			Depart depart = empMapper.selectDepartById(emp.getDepartid());
+			emp.setDepartname(depart.getDepartname());
+		}
+		
+		
+		
 		PageInfo<Emp> page=new PageInfo<Emp>(empList);
 		PageUtils.page(pageNum, page, model, "&empname="+empname);
 		

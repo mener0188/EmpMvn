@@ -34,15 +34,15 @@ function del(empid){
 	});
 }
 
-//全选
+//å¨é
 function qx() {
 	$("[name='ck']").prop("checked",true);
 }
-//全不选
+//å¨ä¸é
 function qbx() {
 	$("[name='ck']").prop("checked",false);
 }
-//反选
+//åé
 function fx() {
 	$("[name='ck']").each(function(){
 		this.checked = !this.checked;
@@ -51,10 +51,10 @@ function fx() {
 
 // function plsc(){
 // 	//jquery dom [checkbox]
-// 	//[] 数组
+// 	//[] æ°ç»
 // 	var ids=[];//
 // 	//<input type="checkbox" name="ck" value="${m.empid }" />
-// 	$("input[type='checkbox']:checked").each(function(i,dom){//把页面选中的元素的id放到数组中
+// 	$("input[type='checkbox']:checked").each(function(i,dom){//æé¡µé¢éä¸­çåç´ çidæ¾å°æ°ç»ä¸­
 // 		//alert($(dom).val());
 // 		ids.push($(dom).val());
 // 	});
@@ -99,10 +99,12 @@ function update(empid){
 </script>
 </head>
 <body>
-
+<h1>
+注意:本案例含有两种常用的关联查询方式
+</h1>
 <form action="list" method="post">
 电影名称,empname: <input type="text" name="empname" value="${empname }">
-<input type="submit" value="查询">
+<input type="submit" value="search">
 </form>
 <br>
 <table>
@@ -120,7 +122,7 @@ function update(empid){
     <td>sex</td>
     <td>birth</td>
   <td>
-     <input type="button" value="添加" onclick="add()">
+     <input type="button" value="add" onclick="add()">
   </td>
 </tr>
 
@@ -133,6 +135,8 @@ function update(empid){
 	<td>${m.empname }</td>
 	<td>${m.empdesc }</td>
 	<td>${m.departid }</td>
+	<td>${m.departname }</td>
+	<td>${m.departname2 }</td>
 	<td>${m.jobid }</td>
 	<td>${m.age }</td>
 	<td>${m.sex }</td>
